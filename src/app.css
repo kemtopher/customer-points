@@ -1,0 +1,12 @@
+.app-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash-wrapper {
+    width: 442px;
+    height: 85vh;
+    border-radius: 2em;
+    background: lightslategray;
+}
