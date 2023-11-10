@@ -1,3 +1,8 @@
+html, body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #FAF9F6;
+}
+
 .app-stage {
     display: flex;
     justify-content: center;
@@ -8,5 +13,5 @@
     width: 442px;
     height: 85vh;
     border-radius: 2em;
-    background: lightslategray;
+    padding: 2em;
 }
