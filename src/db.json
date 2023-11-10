@@ -2,47 +2,38 @@
   "transactions": [
     {
       "id": 1,
-      "customer": "Christopher",
       "amount": 25.55
     },
     {
       "id": 2,
-      "customer": "Christopher",
       "amount": 85.01
     },
     {
       "id": 3,
-      "customer": "Christopher",
       "amount": 100.25
     },
     {
       "id": 4,
-      "customer": "Christopher",
       "amount": 127.05
     },
     {
       "id": 5,
-      "customer": "Christopher",
       "amount": 143.02
     },
     {
       "id": 6,
-      "customer": "Christopher",
       "amount": 227.32
     },
     {
       "id": 7,
-      "customer": "Christopher",
       "amount": 55.01
     },
     {
       "id": 8,
-      "customer": "Christopher",
       "amount": 15.01
     },
     {
       "id": 9,
-      "customer": "Christopher",
       "amount": 120.0
     }
   ]
