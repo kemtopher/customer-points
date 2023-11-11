@@ -2,38 +2,47 @@
   "transactions": [
     {
       "id": 1,
+      "status": true,
       "amount": 25.55
     },
     {
       "id": 2,
+      "status": true,
       "amount": 85.01
     },
     {
       "id": 3,
+      "status": false,
       "amount": 100.25
     },
     {
       "id": 4,
+      "status": true,
       "amount": 127.05
     },
     {
       "id": 5,
+      "status": true,
       "amount": 143.02
     },
     {
       "id": 6,
+      "status": true,
       "amount": 227.32
     },
     {
       "id": 7,
+      "status": false,
       "amount": 55.01
     },
     {
       "id": 8,
+      "status": true,
       "amount": 15.01
     },
     {
       "id": 9,
+      "status": false,
       "amount": 120.0
     }
   ]
