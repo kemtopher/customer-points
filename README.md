@@ -1,6 +1,6 @@
 # Customer Points Program w/ Mock API
 
-View the demo at [Demo Project](https://github.com/facebook/create-react-app).
+View the demo at [Demo Project](https://customer-points.netlify.app/).
 
 ## Available Scripts
 
