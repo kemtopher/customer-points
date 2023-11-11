@@ -1,6 +1,17 @@
-.transaction-table-row, .transaction-table-header {
+.user-dash {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info {
+    width: 100%;
+}
+
+.transaction-table-header, .transaction-table-row {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 2fr 2fr 1fr;
 }
 
 .transaction-table-header {
@@ -8,14 +19,69 @@
     font-weight: bold;
 }
 
-.transaction-table-row .approved-transaction {
-    width: 15px;
-    height: 15px;
-    background: green;
+.transaction-table-row {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #d3d3d3;
 }
 
-.transaction-table-row .pending-transaction {
-    width: 15px;
-    height: 15px;
-    background: red;
+.spinner {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.spinner span {
+    font-size: 2rem;
+    animation: fade 1s linear 0s infinite;
+    padding-right: 1rem;
+}
+
+.half-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #000;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.5s linear 0s infinite;
+}
+
+.completed {
+    font-size: 2rem;
+    color: #000;
+
+    animation: bigger 1s linear;
+}
+
+@keyframes bigger {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(2);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

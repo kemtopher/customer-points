@@ -3,47 +3,69 @@ import UserDash from "./user-dash/user-dash";
 import "../src/app.css";
 
 const App = () => {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
+
+  function toggleErrorState() {
+    if (loading) return;
+    setError((prevState) => !prevState);
+  }
+
+  function toggleLoadingState() {
+    if (error) return;
+    setLoading((prevState) => !prevState);
+  }
 
   async function getTransactions(url) {
     try {
-      setLoading(true);
       const res = await fetch(url);
 
       if (!res.ok) {
         setError(true);
       }
 
-      const data = await res.json();
-      return data;
+      let data = await res.json();
+      setTransactions(data);
+      setLoading(false);
     } catch (err) {
-      setError(true);
+      setTransactions(null);
+      setError(err.message);
     }
   }
 
   useEffect(() => {
-    getTransactions("http://localhost:4000/transactions")
-      .then((res) => {
-        setTransactions(res);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError(true);
-      });
+    getTransactions("http://localhost:4000/transactions");
   }, []);
 
   return (
     <div className="App">
       <div className="app-stage">
         <div className="dash-wrapper">
-          {loading ? (
-            <h1 className="loading-sign">loading data ...</h1>
+          {error ? (
+            <div className="error-block">
+              <h2 className="error-state">Oops, something went wrong!</h2>
+              <p className="error-state">Please try refreshing the page.</p>
+            </div>
           ) : (
-            <UserDash data={transactions} error={error} />
+            <UserDash data={transactions} error={error} loading={loading} />
           )}
+          <div className="button-row">
+            <button
+              className={`error-button ${error ? "refresh-style" : ""}`}
+              onClick={toggleErrorState}
+              disabled={loading}
+            >
+              {error || loading ? "Refresh Page" : "Simulate Error"}
+            </button>
+            <button
+              className={`loading-button ${error ? "refresh-style" : ""}`}
+              onClick={toggleLoadingState}
+              disabled={error}
+            >
+              {loading || error ? "Refresh Page" : "Simulate Loading"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

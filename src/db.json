@@ -2,47 +2,47 @@
   "transactions": [
     {
       "id": 1,
-      "status": true,
+      "date": "9/13/23",
       "amount": 25.55
     },
     {
       "id": 2,
-      "status": true,
+      "date": "9/13/23",
       "amount": 85.01
     },
     {
       "id": 3,
-      "status": false,
+      "date": "9/13/23",
       "amount": 100.25
     },
     {
       "id": 4,
-      "status": true,
+      "date": "9/13/23",
       "amount": 127.05
     },
     {
       "id": 5,
-      "status": true,
+      "date": "9/13/23",
       "amount": 143.02
     },
     {
       "id": 6,
-      "status": true,
+      "date": "9/13/23",
       "amount": 227.32
     },
     {
       "id": 7,
-      "status": false,
+      "date": "9/13/23",
       "amount": 55.01
     },
     {
       "id": 8,
-      "status": true,
+      "date": "9/13/23",
       "amount": 15.01
     },
     {
       "id": 9,
-      "status": false,
+      "date": "9/13/23",
       "amount": 120.0
     }
   ]
