@@ -6,6 +6,11 @@ View the demo at [Demo Project](https://customer-points.netlify.app/). CURRENTLY
 
 In the project directory, you can run:
 
+### `npm run dev`
+
+Main script to run in development.
+Runs both json server and react app.
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -20,7 +25,7 @@ json-server --watch -p 4000 src/db.json
 
 Serves mock DB via json-server on port 4000.\
 
-Endpoints:
+Dev Endpoints:
 
 - /transactions
 
