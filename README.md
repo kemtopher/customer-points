@@ -2,6 +2,15 @@
 
 View the demo at [Demo Project](https://customer-points.netlify.app/). CURRENTLY NOT AVAILABLE
 
+To get project running, clone repo and then navigate into your new site’s directory and start it up.
+
+```shell
+    npm i
+    npm run dev
+```
+
+Visit [localhost:3000](http://localhost:3000).
+
 ## Available Scripts
 
 In the project directory, you can run:
