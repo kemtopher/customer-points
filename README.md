@@ -9,8 +9,6 @@ To get project running, clone repo and then navigate into your new site’s dire
     npm run dev
 ```
 
-Visit [localhost:3000](http://localhost:3000).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -62,3 +60,7 @@ Given a record of every transaction during a three month period, calculate the r
 - Make asynchronous API call to fetch data
 - Make up a data set to best demonstrate your solution
 - Check solution into GitHub
+
+## Tech Versions
+
+- Node v18.0.0
