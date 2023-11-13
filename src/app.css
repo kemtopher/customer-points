@@ -1,27 +1,23 @@
 html, body {
     font-family: Helvetica, Arial, sans-serif;
-    background: #f5f5dc;
-    background: #f7e7ce;
+    background: #121212;
 }
 
-.app-stage, 
 .dash-wrapper {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.app-stage {
-    height: 100vh;
+    align-items: center; */
+    margin: 0 auto;
 }
 
 .dash-wrapper {
     flex-direction: column;
     width: 442px;
     height: 85vh;
-    overflow: scroll;
     padding: 2em;
-    background: #f9f9f9;
+    background: #404040;
+    color:#f9f9f9;
+    overflow:scroll;
 }
 
 .button-row {

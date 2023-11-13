@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../user-dash/user-dash.css";
 
 const UserDash = ({ data, loading }) => {
-  const [purchaseTotal, setPurchaseTotal] = useState(0);
   const [points, setPoints] = useState(0);
 
   const CurrencyFormat = new Intl.NumberFormat("en-US", {
@@ -13,27 +12,21 @@ const UserDash = ({ data, loading }) => {
   function calculatePoints(amt) {
     const adjustedAmt = Math.floor(amt);
 
-    if (adjustedAmt <= 50) {
-      return 0;
-    } else if (adjustedAmt > 100) {
+    if (adjustedAmt > 100) {
       return (adjustedAmt - 100) * 2 + 50;
     } else if (adjustedAmt > 50 && adjustedAmt <= 100) {
       return adjustedAmt - 50;
+    } else {
+      return 0;
     }
   }
 
   useEffect(() => {
-    data?.forEach((transaction) => {
-      setPurchaseTotal((prev) => prev + transaction.amount);
-
-      const pointsAmt = calculatePoints(transaction.amount);
-      setPoints((prev) => prev + pointsAmt);
-    });
-
-    return () => {
-      setPurchaseTotal(0);
-      setPoints(0);
-    };
+    const accumulatedPoints = data?.reduce(
+      (acc, cur) => acc + calculatePoints(cur.amount),
+      0
+    );
+    setPoints(accumulatedPoints);
   }, [data]);
 
   const userPurchaseTable = data?.map((transaction, index) => (
@@ -62,8 +55,7 @@ const UserDash = ({ data, loading }) => {
             </div>
             {userPurchaseTable}
           </div>
-          <p>Purchase Total: {CurrencyFormat.format(purchaseTotal)}</p>
-          <p>Points Total: {points}</p>
+          <p>Total Points To Date: {points}</p>
         </div>
       )}
     </div>
