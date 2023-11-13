@@ -3,9 +3,20 @@ import MonthPurchases from "../month-purchases/month-purchases";
 import TotalPurchases from "../total-purchases/total-purchases";
 import "../user-dash/user-dash.css";
 
-const UserDash = ({ data, loading, view }) => {
+const UserDash = ({ data, loading }) => {
   const [points, setPoints] = useState(0);
   const [entryGroups, setEntryGroups] = useState([]);
+  const [view, setView] = useState("purchases");
+
+  function togglePurchasesView() {
+    if (view === "purchases") return;
+    setView("purchases");
+  }
+
+  function toggleMonthlyView() {
+    if (view === "points") return;
+    setView("points");
+  }
 
   function calculatePoints(amt) {
     const adjustedAmt = Math.floor(amt);
@@ -63,7 +74,11 @@ const UserDash = ({ data, loading, view }) => {
         </div>
       ) : (
         <div className="user-info">
-          <h1>Purchase Summary</h1>
+          <div className="user-header">
+            <h1>
+              {view === "points" ? "Purchase Points" : "Purchase Summary"}
+            </h1>
+          </div>
           <div className="user-transactions">
             {view === "purchases" ? (
               <TotalPurchases data={data} calcFunc={calculatePoints} />
@@ -71,7 +86,25 @@ const UserDash = ({ data, loading, view }) => {
               <MonthPurchases data={entryGroups} calcFunc={calculatePoints} />
             )}
           </div>
-          <h3>Total Points: {points}</h3>
+          <div className="user-actions">
+            <h3 className="points-total">Total Points: {points}</h3>
+            <div className="button-row">
+              <button
+                className="purchases-button"
+                onClick={togglePurchasesView}
+                disabled={view === "purchases"}
+              >
+                View Purchases
+              </button>
+              <button
+                className="points-button"
+                onClick={toggleMonthlyView}
+                disabled={view === "points"}
+              >
+                View Points
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

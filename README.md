@@ -1,6 +1,6 @@
 # Customer Points Program w/ Mock API
 
-View the demo at [Demo Project](https://customer-points.netlify.app/). NOT CURRENTLY AVAILABLE
+View the demo at [Demo Project](https://customer-points.netlify.app/). CURRENTLY NOT AVAILABLE
 
 ## Available Scripts
 
@@ -20,7 +20,7 @@ json-server --watch -p 4000 src/db.json
 
 Serves mock DB via json-server on port 4000.\
 
-Endpoints:\
+Endpoints:
 
 - /transactions
 

@@ -1,14 +1,14 @@
 .points-row {
     width: 100%;
     padding: 1em 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .points-table-header,
 .points-table-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
 }
 
 .points-table-header {

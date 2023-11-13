@@ -6,17 +6,6 @@ const App = () => {
   const [transactions, setTransactions] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [view, setView] = useState("purchases");
-
-  function togglePurchasesView() {
-    if (view === "purchases") return;
-    setView("purchases");
-  }
-
-  function toggleMonthlyView() {
-    if (view === "points") return;
-    setView("points");
-  }
 
   async function getTransactions(url) {
     try {
@@ -49,21 +38,8 @@ const App = () => {
               <p className="error-state">Please try refreshing the page.</p>
             </div>
           ) : (
-            <UserDash
-              data={transactions}
-              error={error}
-              loading={loading}
-              view={view}
-            />
+            <UserDash data={transactions} error={error} loading={loading} />
           )}
-          <div className="button-row">
-            <button className="purchases-button" onClick={togglePurchasesView}>
-              View Purchases
-            </button>
-            <button className="points-button" onClick={toggleMonthlyView}>
-              View Points
-            </button>
-          </div>
         </div>
       </div>
     </div>

@@ -14,14 +14,15 @@ const TotalPurchases = ({ data, calcFunc }) => {
         <span>Amount</span>
         <span>Points</span>
       </div>
-
-      {data?.map((transaction, index) => (
-        <div className="transaction-table-row" key={index}>
-          <span>{transaction.date}</span>
-          <span>{CurrencyFormat.format(transaction.amount)}</span>
-          <span>{calcFunc(transaction.amount)}</span>
-        </div>
-      ))}
+      <div className="transaction-table-body">
+        {data?.map((transaction, index) => (
+          <div className="transaction-table-row" key={index}>
+            <span>{transaction.date}</span>
+            <span>{CurrencyFormat.format(transaction.amount)}</span>
+            <span>{calcFunc(transaction.amount)}</span>
+          </div>
+        ))}
+      </div>
     </>
   );
 };

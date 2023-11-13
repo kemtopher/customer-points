@@ -4,9 +4,6 @@ html, body {
 }
 
 .dash-wrapper {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     margin: 0 auto;
 }
 
@@ -17,7 +14,6 @@ html, body {
     padding: 2em;
     background: #404040;
     color:#f9f9f9;
-    overflow:scroll;
 }
 
 .button-row {
@@ -38,14 +34,20 @@ html, body {
     padding: 0.5em;
     background: transparent;
     border-radius: 0;
-    border: 2px solid #000;
-    color: #000;
+    border: 2px solid #f9f9f9;
+    color: #f9f9f9;
     transition: 0.3s all;
     cursor: pointer;
 }
 
 .purchases-button:hover,
 .points-button:hover {
-    border: 2px solid orange;
-    color: orange;
+    border: 2px solid #03dac6;
+    color: #03dac6;
+}
+
+.purchases-button:disabled,
+.points-button:disabled {
+    border: 2px solid #03dac6;
+    color: #03dac6;
 }
