@@ -8,6 +8,10 @@ const UserDash = ({ data, loading }) => {
   const [entryGroups, setEntryGroups] = useState([]);
   const [view, setView] = useState("purchases");
 
+  useEffect(() => {
+    console.log("UserDash: ", data);
+  });
+
   function togglePurchasesView() {
     if (view === "purchases") return;
     setView("purchases");
@@ -31,13 +35,13 @@ const UserDash = ({ data, loading }) => {
   }
 
   useEffect(() => {
-    const accumulatedPoints = data?.reduce(
+    const accumulatedPoints = data.reduce(
       (acc, cur) => acc + calculatePoints(cur.amount),
       0
     );
     setPoints(accumulatedPoints);
 
-    const groupedByMonthYear = data?.reduce((acc, cur) => {
+    const groupedByMonthYear = data.reduce((acc, cur) => {
       const months = [
         "January",
         "February",
