@@ -32,8 +32,8 @@ html, body {
     text-align: center;
 }
 
-.error-button,
-.loading-button {
+.purchases-button,
+.points-button {
     width: 100%;
     padding: 0.5em;
     background: transparent;
@@ -44,18 +44,8 @@ html, body {
     cursor: pointer;
 }
 
-.error-button:hover {
-    border: 2px solid red;
-    color: red;
-}
-
-.loading-button:hover {
+.purchases-button:hover,
+.points-button:hover {
     border: 2px solid orange;
     color: orange;
-}
-
-.error-button.refresh-style:hover,
-.loading-button.refresh-style:hover {
-    border: 2px solid green;
-    color: green;
 }

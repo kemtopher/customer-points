@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
+import MonthPurchases from "../month-purchases/month-purchases";
+import TotalPurchases from "../total-purchases/total-purchases";
 import "../user-dash/user-dash.css";
 
-const UserDash = ({ data, loading }) => {
+const UserDash = ({ data, loading, view }) => {
   const [points, setPoints] = useState(0);
-
-  const CurrencyFormat = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+  const [entryGroups, setEntryGroups] = useState([]);
 
   function calculatePoints(amt) {
     const adjustedAmt = Math.floor(amt);
@@ -27,15 +25,34 @@ const UserDash = ({ data, loading }) => {
       0
     );
     setPoints(accumulatedPoints);
-  }, [data]);
 
-  const userPurchaseTable = data?.map((transaction, index) => (
-    <div className="transaction-table-row" key={index}>
-      <span>{transaction.date}</span>
-      <span>{CurrencyFormat.format(transaction.amount)}</span>
-      <span>{calculatePoints(transaction.amount)}</span>
-    </div>
-  ));
+    const groupedByMonthYear = data?.reduce((acc, cur) => {
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const parsed = new Date(cur.date);
+      const year = parsed.getFullYear();
+      const month = parsed.getMonth();
+      const groupKey = `${months[month]},${year}`;
+
+      acc[groupKey] = acc[groupKey] || [];
+      acc[groupKey].push(cur);
+
+      return acc;
+    }, {});
+    setEntryGroups(groupedByMonthYear);
+  }, [data]);
 
   return (
     <div className="user-dash">
@@ -46,16 +63,15 @@ const UserDash = ({ data, loading }) => {
         </div>
       ) : (
         <div className="user-info">
-          <h1>Purchases</h1>
+          <h1>Purchase Summary</h1>
           <div className="user-transactions">
-            <div className="transaction-table-header">
-              <span>Date</span>
-              <span>Amount</span>
-              <span>Points</span>
-            </div>
-            {userPurchaseTable}
+            {view === "purchases" ? (
+              <TotalPurchases data={data} calcFunc={calculatePoints} />
+            ) : (
+              <MonthPurchases data={entryGroups} calcFunc={calculatePoints} />
+            )}
           </div>
-          <p>Total Points To Date: {points}</p>
+          <h3>Total Points: {points}</h3>
         </div>
       )}
     </div>

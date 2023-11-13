@@ -1,0 +1,22 @@
+.points-row {
+    width: 100%;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.points-table-header,
+.points-table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.points-table-header {
+    padding: 1em 0;
+    font-weight: bold;
+}
+
+.points-table-row {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #d3d3d3;
+}

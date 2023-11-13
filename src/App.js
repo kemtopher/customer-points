@@ -6,15 +6,16 @@ const App = () => {
   const [transactions, setTransactions] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [view, setView] = useState("purchases");
 
-  function toggleErrorState() {
-    if (loading) return;
-    setError((prevState) => !prevState);
+  function togglePurchasesView() {
+    if (view === "purchases") return;
+    setView("purchases");
   }
 
-  function toggleLoadingState() {
-    if (error) return;
-    setLoading((prevState) => !prevState);
+  function toggleMonthlyView() {
+    if (view === "points") return;
+    setView("points");
   }
 
   async function getTransactions(url) {
@@ -48,22 +49,19 @@ const App = () => {
               <p className="error-state">Please try refreshing the page.</p>
             </div>
           ) : (
-            <UserDash data={transactions} error={error} loading={loading} />
+            <UserDash
+              data={transactions}
+              error={error}
+              loading={loading}
+              view={view}
+            />
           )}
           <div className="button-row">
-            <button
-              className={`error-button ${error ? "refresh-style" : ""}`}
-              onClick={toggleErrorState}
-              disabled={loading}
-            >
-              {error || loading ? "Refresh Page" : "Simulate Error"}
+            <button className="purchases-button" onClick={togglePurchasesView}>
+              View Purchases
             </button>
-            <button
-              className={`loading-button ${error ? "refresh-style" : ""}`}
-              onClick={toggleLoadingState}
-              disabled={error}
-            >
-              {loading || error ? "Refresh Page" : "Simulate Loading"}
+            <button className="points-button" onClick={toggleMonthlyView}>
+              View Points
             </button>
           </div>
         </div>
