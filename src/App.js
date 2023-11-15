@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch("/.netlify/functions/api")
+      fetch("http://localhost:4000/transactions")
         .then((res) => {
           if (!res.ok) {
             throw new Error(`Network responded with: ${res.status}`);
@@ -18,7 +18,7 @@ const App = () => {
           return res.json();
         })
         .then((data) => {
-          setTransactions(data.transactions);
+          setTransactions(data);
         })
         .catch((err) => {
           setError(err.message);

@@ -11,6 +11,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "concurrently --kill-others \"react-scripts start\" \"json-server --watch -p 4000 src/db.json\"",
+    "json-server": "json-server --watch -p 4000 src/db.json",
     "build": "react-scripts build"
   },
   "eslintConfig": {
