@@ -1,5 +1,7 @@
 # Customer Points Program w/ Mock API
 
+View the demo at [Demo Project](https://customer-points.netlify.app/).
+
 To get project running locally, clone repo and then navigate into your new site’s directory and start it up.
 
 ```shell
