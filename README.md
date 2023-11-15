@@ -2,6 +2,8 @@
 
 View the demo at [Demo Project](https://customer-points.netlify.app/).
 
+The demo is deployed using netlify functions. Checkout the `serverless` branch to see more of that!
+
 To get project running locally, clone repo and then navigate into your new site’s directory and start it up.
 
 ```shell
