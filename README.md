@@ -1,8 +1,6 @@
 # Customer Points Program w/ Mock API
 
-View the demo at [Demo Project](https://customer-points.netlify.app/). CURRENTLY NOT AVAILABLE
-
-To get project running, clone repo and then navigate into your new site’s directory and start it up.
+To get project running locally, clone repo and then navigate into your new site’s directory and start it up.
 
 ```shell
     npm i
@@ -46,6 +44,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+![Ui screens](ui-screens.png)
+
 ## Project Brief
 
 A retailer offers a rewards program to its customers, awarding points based on each recorded purchase.
@@ -56,11 +56,6 @@ A customer receives 2 points for every dollar spent over $100 in each transactio
 
 Given a record of every transaction during a three month period, calculate the reward points earned for each customer per month and total.
 
-- Use Javascript w/ React
-- Make asynchronous API call to fetch data
-- Make up a data set to best demonstrate your solution
-- Check solution into GitHub
+## Node Version
 
-## Tech Versions
-
-- Node v18.0.0
+- v18.0.0
