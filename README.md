@@ -1,20 +1,28 @@
 # Customer Points Program w/ Mock API
 
+View the demo at [Demo Project](https://customer-points.netlify.app/).
+
 To get project running locally, clone repo and then navigate into your new site’s directory and start it up.
 
 ```shell
     npm i
-    npm run dev
+    npm i netlify-cli -g
+    npm netlify dev
 ```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm run dev`
+### `netlify dev`
 
-Main script to run in development.
-Runs both json server and react app.
+Install netlify-cli to use serverless functions
+
+```shell
+    npm i netlify-cli -g
+```
+
+Serves development site + netlify functions
 
 ### `npm start`
 
@@ -23,16 +31,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm run json-server`
-
-json-server --watch -p 4000 src/db.json
-
-Serves mock DB via json-server on port 4000.\
-
-Dev Endpoints:
-
-- /transactions
 
 ### `npm run build`
 
