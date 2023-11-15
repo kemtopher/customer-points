@@ -18,7 +18,7 @@ const App = () => {
           return res.json();
         })
         .then((data) => {
-          setTransactions(data);
+          setTransactions(data.transactions);
         })
         .catch((err) => {
           setError(err.message);
