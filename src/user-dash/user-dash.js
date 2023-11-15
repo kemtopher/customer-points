@@ -8,18 +8,12 @@ const UserDash = ({ data, loading }) => {
   const [entryGroups, setEntryGroups] = useState([]);
   const [view, setView] = useState("purchases");
 
-  useEffect(() => {
-    console.log("UserDash: ", data);
-  });
-
-  function togglePurchasesView() {
-    if (view === "purchases") return;
-    setView("purchases");
-  }
-
-  function toggleMonthlyView() {
-    if (view === "points") return;
-    setView("points");
+  function toggleView() {
+    if (view === "points") {
+      setView("purchases");
+    } else {
+      setView("points");
+    }
   }
 
   function calculatePoints(amt) {
@@ -35,6 +29,8 @@ const UserDash = ({ data, loading }) => {
   }
 
   useEffect(() => {
+    if (!data?.length) return;
+
     const accumulatedPoints = data.reduce(
       (acc, cur) => acc + calculatePoints(cur.amount),
       0
@@ -95,14 +91,14 @@ const UserDash = ({ data, loading }) => {
             <div className="button-row">
               <button
                 className="purchases-button"
-                onClick={togglePurchasesView}
+                onClick={toggleView}
                 disabled={view === "purchases"}
               >
                 View Purchases
               </button>
               <button
                 className="points-button"
-                onClick={toggleMonthlyView}
+                onClick={toggleView}
                 disabled={view === "points"}
               >
                 View Points

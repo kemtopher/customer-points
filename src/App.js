@@ -3,29 +3,29 @@ import UserDash from "./user-dash/user-dash";
 import "../src/app.css";
 
 const App = () => {
-  const [transactions, setTransactions] = useState(null);
+  const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function getTransactions(url) {
-    try {
-      const res = await fetch(url);
-
-      if (!res.ok) {
-        setError(true);
-      }
-
-      let data = await res.json();
-      setTransactions(data);
-      setLoading(false);
-    } catch (err) {
-      setTransactions(null);
-      setError(err.message);
-    }
-  }
-
   useEffect(() => {
-    getTransactions("http://localhost:4000/transactions");
+    setTimeout(() => {
+      fetch("http://localhost:4000/transactions")
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`Network responded with: ${res.status}`);
+          }
+
+          return res.json();
+        })
+        .then((data) => {
+          setTransactions(data);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setTransactions(null);
+        })
+        .finally(() => setLoading(false));
+    }, 3000);
   }, []);
 
   return (
@@ -35,6 +35,7 @@ const App = () => {
           {error ? (
             <div className="error-block">
               <h2 className="error-state">Oops, something went wrong!</h2>
+              <p className="error-state">Error: {error}</p>
               <p className="error-state">Please try refreshing the page.</p>
             </div>
           ) : (
