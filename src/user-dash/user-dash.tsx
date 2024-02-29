@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { EntryData } from "../EntryDataInterface";
 import MonthPurchases from "../month-purchases/month-purchases";
 import TotalPurchases from "../total-purchases/total-purchases";
 import "../user-dash/user-dash.css";
-
-interface EntryData {
-  date: string;
-  amount: number;
-}
 
 type DashProps = {
   data: EntryData[],

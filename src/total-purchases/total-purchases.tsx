@@ -1,7 +1,13 @@
 import React from "react";
+import { EntryData } from "../EntryDataInterface";
 import "../user-dash/user-dash.css";
 
-const TotalPurchases = ({ data, calcFunc }) => {
+type PurchaseProps = {
+  data: EntryData[],
+  calcFunc: (amount: number) => number
+}
+
+const TotalPurchases = ({ data, calcFunc }: PurchaseProps) => {
   const CurrencyFormat = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
