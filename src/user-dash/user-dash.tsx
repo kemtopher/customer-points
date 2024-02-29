@@ -3,10 +3,20 @@ import MonthPurchases from "../month-purchases/month-purchases";
 import TotalPurchases from "../total-purchases/total-purchases";
 import "../user-dash/user-dash.css";
 
-const UserDash = ({ data, loading }) => {
-  const [points, setPoints] = useState(0);
-  const [entryGroups, setEntryGroups] = useState([]);
-  const [view, setView] = useState("purchases");
+interface EntryData {
+  date: string;
+  amount: number;
+}
+
+type DashProps = {
+  data: EntryData[],
+  loading: boolean
+}
+
+const UserDash = ({ data, loading }: DashProps) => {
+  const [points, setPoints] = useState<number>(0);
+  const [entryGroups, setEntryGroups] = useState<{[key: string]: EntryData[]}>({});
+  const [view, setView] = useState<string>("purchases");
 
   function toggleView() {
     if (view === "points") {
@@ -16,7 +26,7 @@ const UserDash = ({ data, loading }) => {
     }
   }
 
-  function calculatePoints(amt) {
+  function calculatePoints(amt: number): number {
     const adjustedAmt = Math.floor(amt);
 
     if (adjustedAmt > 100) {
@@ -61,7 +71,7 @@ const UserDash = ({ data, loading }) => {
       acc[groupKey].push(cur);
 
       return acc;
-    }, {});
+    }, {} as { [key: string]: EntryData[] });
     setEntryGroups(groupedByMonthYear);
   }, [data]);
 
