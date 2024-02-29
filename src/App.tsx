@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { EntryData } from "./EntryDataInterface";
 import UserDash from "./user-dash/user-dash";
 import "../src/app.css";
 
 const App = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [transactions, setTransactions] = useState<EntryData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // force buffer time
     setTimeout(() => {
       fetch("http://localhost:4000/transactions")
         .then((res) => {
@@ -17,12 +19,12 @@ const App = () => {
 
           return res.json();
         })
-        .then((data) => {
+        .then((data: EntryData[]) => {
           setTransactions(data);
         })
-        .catch((err) => {
+        .catch((err: Error) => {
           setError(err.message);
-          setTransactions(null);
+          setTransactions([]);
         })
         .finally(() => setLoading(false));
     }, 3000);
@@ -39,7 +41,7 @@ const App = () => {
               <p className="error-state">Please try refreshing the page.</p>
             </div>
           ) : (
-            <UserDash data={transactions} error={error} loading={loading} />
+            <UserDash data={transactions} loading={loading} />
           )}
         </div>
       </div>
