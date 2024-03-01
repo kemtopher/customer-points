@@ -2,6 +2,7 @@
 
 View the demo at [Demo Project](https://customer-points.netlify.app/).
 
+The Typescript version is on the `typescript` branch!
 The demo is deployed using netlify functions. Checkout the `serverless` branch to see more of that!
 
 To get project running locally, clone repo and then navigate into your new siteâ€™s directory and start it up.
@@ -13,6 +14,7 @@ To get project running locally, clone repo and then navigate into your new siteâ
 
 ## Available Scripts
 
+### `For the local Typescript and JS versions`
 In the project directory, you can run:
 
 ### `npm run dev`
