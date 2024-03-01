@@ -17,11 +17,11 @@ const MonthPurchases = ({ data, calcFunc }: PurchaseProps) => {
         <span>Month</span>
         <span>Points</span>
       </div>
-      {pointsArr.map((entry, index) => (
+      {pointsArr.map(([month, point], index) => (
         <div className="points-row" key={index}>
-          <span className="month-title">{entry[0]}</span>
+          <span className="month-title">{month}</span>
           <span className="month-points">
-            {entry[1].reduce((acc, cur) => acc + calcFunc(cur.amount), 0)}
+            {point.reduce((acc, cur) => acc + calcFunc(cur.amount), 0)}
           </span>
         </div>
       ))}

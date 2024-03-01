@@ -4,7 +4,7 @@ import UserDash from "./user-dash/user-dash";
 import "../src/app.css";
 
 const App = () => {
-  const [transactions, setTransactions] = useState<{[key: string]: EntryData[]} | []>([]);
+  const [transactions, setTransactions] = useState<EntryData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,7 +19,7 @@ const App = () => {
 
           return res.json();
         })
-        .then((data: {[key: string]: EntryData[]}) => {
+        .then((data: EntryData[]) => {
           setTransactions(data);
         })
         .catch((err: Error) => {
